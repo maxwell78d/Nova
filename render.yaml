@@ -17,4 +17,3 @@ services:
         sync: false
       - key: GROQ_GEN_KEY
         sync: false
-    nodeVersion: "20"
