@@ -1,0 +1,33 @@
+export interface AIEvaluationTrace {
+  id: string;
+  traceVersion: number;
+  timestamp: number;
+  studentId: string;
+  studentName?: string;
+  courseId: string;
+  courseTitle?: string;
+  quizId: string;
+  quizTitle?: string;
+  questionId: string;
+  questionType: string;
+  questionText: string;
+  rubric: string;
+  studentAnswer: string;
+  promptSystem: string;
+  promptUser: string;
+  fullPrompt: string;
+  rawModelResponse: string;
+  parsedResponse: unknown;
+  score: number;
+  feedback: string;
+  model: string;
+  provider: string;
+  latencyMs: number;
+  cacheHit: boolean;
+  retryCount: number;
+  submissionId: string;
+  requestHash: string;
+  status: 'success' | 'cached' | 'failed' | 'cancelled';
+  error?: string;
+  parentTraceId?: string;
+}

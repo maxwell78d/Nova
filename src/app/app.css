@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+:root {
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-900: #1e3a8a;
+  
+  --surface-50: #f8fafc;
+  --surface-100: #f1f5f9;
+  --surface-900: #0f172a;
+  
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-main: #e2e8f0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-main);
+  background-color: white;
+}
+
+/* Clases de utilidad para que funcionen los componentes premium */
+.bg-surface-50 { background-color: var(--surface-50); }
+.bg-surface-100 { background-color: var(--surface-100); }
+.bg-surface-900 { background-color: var(--surface-900); }
+.text-text-main { color: var(--text-main); }
+.text-text-muted { color: var(--text-muted); }
+.text-primary-600 { color: var(--primary-600); }
+.border-border-main { border-color: var(--border-main); }
+
+.shadow-premium {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+}
+
+.mat-icon {
+  font-family: 'Material Icons' !important;
+}
