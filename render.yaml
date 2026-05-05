@@ -1,21 +1,25 @@
 services:
   - type: web
-    name: nova-academy
-    runtime: static
-
+    name: web-app
+    runtime: node
+    region: oregon
+    plan: free
     buildCommand: npm install && npm run build
-
-    staticPublishPath: dist/app/browser
-
+    startCommand: node dist/server.js
     envVars:
       - key: NODE_ENV
         value: production
-
+      - key: PORT
+        value: "3000"
+      - key: FIREBASE_PROJECT_ID
+        sync: false
+      - key: FIREBASE_CLIENT_EMAIL
+        sync: false
+      - key: FIREBASE_PRIVATE_KEY
+        sync: false
       - key: GROQ_API_KEY
         sync: false
-
       - key: GROQ_EVAL_KEY
         sync: false
-
       - key: GROQ_GEN_KEY
         sync: false
