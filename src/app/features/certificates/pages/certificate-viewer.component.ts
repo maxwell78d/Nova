@@ -161,10 +161,11 @@ import * as QRCode from 'qrcode';
             </div>
           </div>
         
-        <!-- Ayuda Verificación -->
-        <div class="mt-8 text-center text-sm text-text-muted bg-white p-4 border border-border-main">
+        <div class="mt-8 text-center text-sm text-text-muted bg-white p-4 border border-[#e2e8f0]">
           Enlace permanente de verificación: <br>
-          <a routerLink="/verify/{{ c.id }}" class="text-primary-600 font-bold hover:underline">nova-academy.com/verify/{{ c.id }}</a>
+          <a [routerLink]="['/verify', c.id]" class="text-primary-600 font-bold hover:underline">
+            {{ getVerificationUrl(c.id) }}
+          </a>
         </div>
       } @else {
         <div class="text-center py-20 text-red-600">
@@ -211,12 +212,23 @@ export class CertificateViewerComponent implements OnInit {
     return 'No Aprobado';
   }
 
+  /**
+   * Generates the absolute verification URL.
+   */
+  getVerificationUrl(id: string): string {
+    const origin = window.location.origin;
+    // For consistency, ensure no trailing slash
+    const cleanOrigin = origin.endsWith('/') ? origin.slice(0, -1) : origin;
+    return `${cleanOrigin}/verify/${id}`;
+  }
+
   async generateQR(id: string) {
     try {
-      const verifyUrl = `${window.location.origin}/verify/${id}`;
+      const verifyUrl = this.getVerificationUrl(id);
       const url = await QRCode.toDataURL(verifyUrl, {
         width: 150,
         margin: 1,
+        errorCorrectionLevel: 'M',
         color: {
           dark: '#0f172a',
           light: '#ffffff'
@@ -224,7 +236,7 @@ export class CertificateViewerComponent implements OnInit {
       });
       this.qrCodeDataUrl.set(url);
     } catch (err) {
-      // QR generation failed silently
+      console.error('QR Generation Error:', err);
     }
   }
 
