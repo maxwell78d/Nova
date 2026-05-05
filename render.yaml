@@ -1,19 +1,21 @@
 services:
   - type: web
     name: nova-academy
-    runtime: node
-    region: oregon
-    plan: free
+    runtime: static
+
     buildCommand: npm install && npm run build
-    startCommand: node dist/app/server/server.mjs
+
+    staticPublishPath: dist/app/browser
+
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: "4000"
+
       - key: GROQ_API_KEY
         sync: false
+
       - key: GROQ_EVAL_KEY
         sync: false
+
       - key: GROQ_GEN_KEY
         sync: false
